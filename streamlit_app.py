@@ -21,13 +21,13 @@ def display_contests(urls):
         contests = get_contests(url)
         if contests:
             for title, link in contests:
-                st.write(f"**{title}**")
-                st.write(f"[Link]({link})")
+                st.write(f"**[{title}]({link})**")
+                #st.write(f"[Link]({link})")
         else:
             st.write("No contests found for:", url)
 
 if __name__ == "__main__":
-    st.title('Contest Listings from iHeartRadio Stations')
+    st.title('Hi Baby here are Contest Listings from iHeartRadio Stations')
 
     urls = ["https://981thebreeze.iheart.com/promotions/", 
             "https://1013.iheart.com/promotions/", 
