@@ -1,33 +1,34 @@
+import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
 def get_contests(url):
-    # Send a GET request to the webpage
+    contests = []
     response = requests.get(url)
-    
-    # Check if the request was successful
     if response.status_code == 200:
-        # Parse the HTML content of the webpage
         soup = BeautifulSoup(response.content, 'html.parser')
-        
-        # Find all elements with class 'component-content-tile'
         contest_titles = soup.find_all(class_='component-content-tile')
-        
-        # Extract the text from these elements and print
         for title in contest_titles:
-            print(title.get_text().strip())
+            contest_text = title.get_text().strip()
             relative_url = title.find('a')['href']
             full_url = urljoin(url, relative_url)
-            print(f"URL: {full_url}\n")
+            contests.append((contest_text, full_url))
+    return contests
 
-            #url = title.find('a')['href']
-            #print(f"URL: {url}\n")
-            
-    else:
-        print("Failed to retrieve page:", response.status_code)
+def display_contests(urls):
+    for url in urls:
+        contests = get_contests(url)
+        if contests:
+            for title, link in contests:
+                st.write(f"**{title}**")
+                st.write(f"[Link]({link})")
+        else:
+            st.write("No contests found for:", url)
 
-if __name__ == "_main_":
+if __name__ == "__main__":
+    st.title('Contest Listings from iHeartRadio Stations')
+
     urls = ["https://981thebreeze.iheart.com/promotions/", 
             "https://1013.iheart.com/promotions/", 
             "https://kmel.iheart.com/promotions/", 
@@ -51,5 +52,5 @@ if __name__ == "_main_":
             "https://softrock989.iheart.com/promotions/", 
             "https://thebeat1037.iheart.com/promotions/", 
             "https://1027thewolf.iheart.com/promotions/"]
-    for url in urls:
-        get_contests(url)
+
+    display_contests(urls)
