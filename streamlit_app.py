@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+import pytz
+from datetime import datetime
 
 def get_contests(url):
     contests = []
@@ -28,7 +30,10 @@ def display_contests(urls):
 
 if __name__ == "__main__":
     st.title('Hi Baby here are Contest Listings from iHeartRadio Stations')
-
+    pst = pytz.timezone('US/Pacific')
+    current_time = datetime.now(pst).strftime("%Y-%m-%d %H:%M:%S")
+    st.write("Current time and date in PST: ", current_time)
+    
     urls = ["https://981thebreeze.iheart.com/promotions/", 
             "https://1013.iheart.com/promotions/", 
             "https://kmel.iheart.com/promotions/", 
