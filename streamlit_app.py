@@ -99,3 +99,9 @@ if filter_option != 'All':
 
 markdown_table = dataframe_to_markdown_table(df)
 st.markdown(markdown_table)
+
+st.set_page_config(
+    page_title="alice.fm",
+    page_icon="📡",
+    layout="wide"
+)
