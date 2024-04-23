@@ -88,6 +88,12 @@ urls = ["https://981thebreeze.iheart.com/promotions/",
 
 df = fetch_and_classify_contests(urls)
 
+st.set_page_config(
+    page_title="alice.fm",
+    page_icon="📡",
+    layout="wide"
+)
+
 st.title('Hi Baby here are Contest Listings from iHeartRadio Stations')
 pst = pytz.timezone('US/Pacific')
 current_time = datetime.now(pst).strftime("%Y-%m-%d %I:%M:%S %p")
@@ -99,9 +105,3 @@ if filter_option != 'All':
 
 markdown_table = dataframe_to_markdown_table(df)
 st.markdown(markdown_table)
-
-st.set_page_config(
-    page_title="alice.fm",
-    page_icon="📡",
-    layout="wide"
-)
