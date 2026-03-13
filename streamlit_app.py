@@ -82,7 +82,7 @@ def fetch_and_classify_contests(urls):
     return df
 
 
-st.title('Hi Baby here are Contest Listings from iHeartRadio Stations')
+st.title('Hi Mimi here are Contest Listings from iHeartRadio Stations')
 pst = pytz.timezone('US/Pacific')
 current_time = datetime.now(pst).strftime("%Y-%m-%d %I:%M:%S %p")
 st.write("Current as of: ", current_time)
