@@ -361,6 +361,13 @@ with st.sidebar:
     all_types = list(TYPE_ICONS.keys())
     selected_types = st.multiselect("🏷️ Contest type", all_types)
 
+    st.divider()
+    st.markdown("**Sort**")
+    sort_by = st.selectbox(
+        "↕️ Sort by",
+        ["Title (A–Z)", "Title (Z–A)", "Station (A–Z)", "Station (Z–A)", "Type", "Region"],
+    )
+
 # ── Fetch data ───────────────────────────────────────────────────────────────
 with st.spinner("Fetching contest listings from 23 stations..."):
     df = fetch_and_classify_contests(tuple(STATIONS.keys()))
@@ -379,6 +386,17 @@ if selected_stations:
     filtered = filtered[filtered["Station"].isin(selected_stations)]
 if selected_types:
     filtered = filtered[filtered["Type"].isin(selected_types)]
+
+SORT_OPTIONS = {
+    "Title (A–Z)": ("Title", True),
+    "Title (Z–A)": ("Title", False),
+    "Station (A–Z)": ("Station", True),
+    "Station (Z–A)": ("Station", False),
+    "Type": ("Type", True),
+    "Region": ("Region", True),
+}
+sort_col, sort_asc = SORT_OPTIONS[sort_by]
+filtered = filtered.sort_values(sort_col, ascending=sort_asc, ignore_index=True)
 
 # ── Metrics row ──────────────────────────────────────────────────────────────
 m1, m2, m3, m4 = st.columns(4)
