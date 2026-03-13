@@ -335,13 +335,13 @@ st.markdown(
 with st.sidebar:
     st.markdown("### 📡 alice.fm")
     st.caption("Your NorCal radio contest dashboard")
-    st.divider()
+    #st.divider()
 
     if st.button("🔄 Refresh Data", use_container_width=True):
         st.cache_data.clear()
         st.toast("Cache cleared — fetching fresh data!", icon="✅")
 
-    st.divider()
+    #st.divider()
     st.markdown("**Filters**")
     keyword = st.text_input("🔍 Search contests", placeholder="e.g. tickets, trip, win")
 
