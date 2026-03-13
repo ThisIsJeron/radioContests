@@ -153,8 +153,9 @@ CARD_CSS = """
     border-radius: 14px;
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    background: var(--background-color, #ffffff);
-    height: 100%;
+    background: var(--secondary-background-color, #f0f2f6);
+    color: var(--text-color, #1a1a2e);
+    margin-bottom: 1.2rem;
     display: flex;
     flex-direction: column;
 }
@@ -179,10 +180,11 @@ CARD_CSS = """
     line-height: 1.4;
     margin-bottom: 0.7rem;
     flex: 1;
+    color: var(--text-color, #1a1a2e);
 }
 .card-body .card-title a {
     text-decoration: none;
-    color: inherit;
+    color: var(--text-color, #1a1a2e);
 }
 .card-body .card-title a:hover {
     text-decoration: underline;
@@ -207,8 +209,7 @@ CARD_CSS = """
 }
 .badge-type {
     background: rgba(128, 128, 128, 0.12);
-    color: inherit;
-    opacity: 0.8;
+    color: var(--text-color, #555);
 }
 .badge-region {
     color: white;
