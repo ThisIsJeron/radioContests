@@ -105,6 +105,34 @@ STATIONS = {
         "name": "Fox Sports AM 1280",
         "region": "Monterey",
     },
+    "https://classichits1037.iheart.com/promotions/": {
+        "name": "Classic Hits 103.7",
+        "region": "Bay Area",
+    },
+    "https://iheartsportsbayarea.iheart.com/promotions/": {
+        "name": "iHeart Sports 960",
+        "region": "Bay Area",
+    },
+    "https://937theriver.iheart.com/promotions/": {
+        "name": "93.7 The River",
+        "region": "Sacramento",
+    },
+    "https://lapreciosa929.iheart.com/promotions/": {
+        "name": "La Preciosa 92.9",
+        "region": "Central Valley",
+    },
+    "https://foxsportsradio1340.iheart.com/promotions/": {
+        "name": "Fox Sports AM 1340",
+        "region": "Central Valley",
+    },
+    "https://krdu1130.iheart.com/promotions/": {
+        "name": "KRDU 1130",
+        "region": "Central Valley",
+    },
+    "https://powertalk967.iheart.com/promotions/": {
+        "name": "Power Talk 96.7",
+        "region": "Central Valley",
+    },
 }
 
 TYPE_ICONS = {
@@ -369,7 +397,7 @@ with st.sidebar:
     )
 
 # ── Fetch data ───────────────────────────────────────────────────────────────
-with st.spinner("Fetching contest listings from 23 stations..."):
+with st.spinner("Fetching contest listings from 30 stations..."):
     df = fetch_and_classify_contests(tuple(STATIONS.keys()))
 
 if df.empty:
