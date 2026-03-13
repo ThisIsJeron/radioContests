@@ -1,4 +1,5 @@
-streamlit
-requests
-beautifulsoup4
-pytz
+streamlit>=1.55.0
+requests>=2.32.0
+beautifulsoup4>=4.12.0
+pytz>=2024.1
+lxml>=5.0.0
